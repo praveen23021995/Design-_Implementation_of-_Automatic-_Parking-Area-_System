@@ -1,0 +1,11 @@
+from machine import Pin,SoftI2C
+
+i2c = SoftI2C(scl=Pin(33),sda=Pin(25))
+
+devices = i2c.scan()
+if len(devices) == 0:
+ print("No i2c device !")
+else:
+ print('i2c devices found:',len(devices))
+for device in devices:
+ print("At address: ",hex(device))
